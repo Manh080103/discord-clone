@@ -18,6 +18,7 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useModal } from "@/hooks/use-modal-store";
+import { EmojiPicker } from "../emoji-picker";
 
 interface ChatItemProps {
   id: string;
@@ -211,6 +212,13 @@ export const ChatItem = ({
                             placeholder="Edited message"
                             {...field}
                           />
+                          <div className="absolute top-2 right-4">
+                            <EmojiPicker
+                              onChange={(emoji: string) =>
+                                field.onChange(`${field.value} ${emoji}`)
+                              }
+                            />
+                          </div>
                         </div>
                       </FormControl>
                     </FormItem>
